@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import "./globals.css";
 import { Roboto } from 'next/font/google';
 import { ThemeProvider } from '@mui/material/styles';
 import { mainTheme } from "@/theme/mui.theme";
+import CssBaseline from '@mui/material/CssBaseline';
 
 const roboto = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -29,6 +29,7 @@ export default function RootLayout({
       >
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={mainTheme}>
+            <CssBaseline enableColorScheme />
             {children}
           </ThemeProvider>
         </AppRouterCacheProvider>

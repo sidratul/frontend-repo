@@ -5,5 +5,4 @@ export const mainTheme = createTheme({
   typography: {
     fontFamily: 'var(--font-roboto)',
   },
-  cssVariables: true,
 });
