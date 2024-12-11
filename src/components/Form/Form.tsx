@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik';
 import { AnyObject, object } from 'yup';
 import { FormProps } from './form.types';
-import { Box, Button, FormControl, FormHelperText, InputLabel } from '@mui/material';
+import { Box, Button, FormControl, FormHelperText, Stack } from '@mui/material';
 
 export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => {
   const { onSubmit, data, fields, submitLabel, loading, readOnly} = props;
@@ -27,16 +27,9 @@ export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => 
   });
 
   return (
-    <Box
+    <Stack
       component="form"
-      noValidate
-      autoComplete="off"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        gap: 2,
-      }}
+      gap={2}
     >
       {
         fieldNames.map((key: string) => {
@@ -50,9 +43,10 @@ export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => 
               key={`form-${key}`}
               variant='standard'
             >
-              <InputLabel>{field.label} sdsd</InputLabel>
+              {/* <InputLabel>{field.label} sdsd</InputLabel> */}
               <field.input
-                // placeholder={field.props?.placeholder}
+                label={field.label}
+                placeholder={field.props?.placeholder}
                 defaultValue={values[key] as T[keyof T]}
                 readOnly={readOnly}
                 onChange={(val: T[keyof T])=>{
@@ -69,17 +63,14 @@ export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => 
         })
       }
       {!readOnly && (
-        // <button
-        //   loading={loading}
-        //   onPress={submitForm}
-        // >{submitLabel || 'Submit'}</Button>
-
         <Button
           onClick={submitForm}
+          variant='contained'
+          size='large'
         >
           {submitLabel || 'Submit'}
         </Button>
       )}
-    </Box>
+    </Stack>
   )
 }
