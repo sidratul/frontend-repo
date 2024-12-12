@@ -11,19 +11,19 @@ const loginFields: FormFieldProps<UserLogin> = {
   email: {
     label: 'Email',
     input: TextInput,
-    validation: yup.string().email(),
+    validation: yup.string().email().required(),
   },
   password: {
     label: 'Password',
     input: PasswordInput,
-    validation: yup.string().min(6),
+    validation: yup.string().min(6).required(),
   }
 }
 
 export interface LoginFormProps {
   onSubmit: (data: UserLogin) => void;
   loading: boolean;
-  label: string;
+  label?: string;
 }
 
 export const LoginForm: FC<LoginFormProps> = ({onSubmit, loading, label}) => {

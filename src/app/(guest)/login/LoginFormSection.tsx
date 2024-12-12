@@ -5,7 +5,8 @@ import React from 'react'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase.config';
 import { LoginForm } from '@/components/forms';
-
+import { useEffect } from 'react';
+import { show } from '@/components/Toast';
 
 export const LoginFormSection = () => {
   const [
@@ -15,21 +16,26 @@ export const LoginFormSection = () => {
     error,
   ] = useSignInWithEmailAndPassword(auth);
 
-  console.log('error', error, user);
+  useEffect(()=>{
+    if(!error) {
+      return;
+    }
 
-  // if (error) {
-  //   console.log('error', error);
-  // }
+    show('Invalid account or Incorect password', 'error');
+  }, [error]);
 
   const onSubmit = async (data: UserLogin) => {
     const user = await signInWithEmailAndPassword(data.email, data.password);
-    console.log("user", user);
+    const token = await user?.user.getIdToken();
+    show(token!, 'info');
   }
 
   return (
-    <LoginForm
-      loading={loading}
-      onSubmit={onSubmit}
-    />
+    <div>
+      <LoginForm
+        loading={loading}
+        onSubmit={onSubmit}
+      />
+    </div>
   )
 }
