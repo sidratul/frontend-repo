@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormik } from 'formik';
 import { AnyObject, object } from 'yup';
 import { FormProps } from './form.types';
-import { Box, Button, FormControl, FormHelperText, Stack } from '@mui/material';
+import { Button, FormControl, FormHelperText, Stack } from '@mui/material';
 
 export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => {
   const { onSubmit, data, fields, submitLabel, loading, readOnly} = props;
@@ -30,6 +30,7 @@ export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => 
     <Stack
       component="form"
       gap={2}
+      direction={'column'}
     >
       {
         fieldNames.map((key: string) => {
@@ -67,6 +68,7 @@ export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => 
           onClick={submitForm}
           variant='contained'
           size='large'
+          disabled={loading}
         >
           {submitLabel || 'Submit'}
         </Button>

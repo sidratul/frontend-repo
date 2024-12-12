@@ -1,13 +1,13 @@
 'use client';
-
 import Form, { FormFieldProps, } from '@/components/Form'
 import { PasswordInput } from '@/components/inputs/PasswordInput/PasswordInput';
 import { TextInput } from '@/components/inputs/TextInput'
 import { UserLogin } from '@/types/user.types'
 import React from 'react'
 import * as yup from 'yup';
+import { FC } from 'react';
 
-const loginFormProps: FormFieldProps<UserLogin> = {
+const loginFields: FormFieldProps<UserLogin> = {
   email: {
     label: 'Email',
     input: TextInput,
@@ -20,15 +20,18 @@ const loginFormProps: FormFieldProps<UserLogin> = {
   }
 }
 
-export const LoginForm = () => {
-  const onSubmit = (data: UserLogin) => {
-    console.log("data", data);
-  }
+export interface LoginFormProps {
+  onSubmit: (data: UserLogin) => void;
+  loading: boolean;
+  label: string;
+}
 
+export const LoginForm: FC<LoginFormProps> = ({onSubmit, loading, label}) => {
   return (
     <Form
-      fields={loginFormProps}
-      submitLabel='Login'
+      loading={loading}
+      fields={loginFields}
+      submitLabel={label || 'Login'}
       onSubmit={onSubmit}
     />
   )
