@@ -7,6 +7,7 @@ import { auth } from '@/firebase/firebase.config';
 import { LoginForm } from '@/components/forms';
 import { useEffect } from 'react';
 import { show } from '@/components/Toast';
+import { login } from '@/app/actions';
 
 export const LoginFormSection = () => {
   const [
@@ -27,15 +28,14 @@ export const LoginFormSection = () => {
   const onSubmit = async (data: UserLogin) => {
     const user = await signInWithEmailAndPassword(data.email, data.password);
     const token = await user?.user.getIdToken();
-    show(token!, 'info');
+    
+    login(token!);
   }
 
   return (
-    <div>
-      <LoginForm
-        loading={loading}
-        onSubmit={onSubmit}
-      />
-    </div>
+    <LoginForm
+      loading={loading}
+      onSubmit={onSubmit}
+    />
   )
 }
