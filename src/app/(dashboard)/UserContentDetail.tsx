@@ -1,18 +1,33 @@
 import { useGetUserDetail } from '@/api/users/user.api';
 import React from 'react'
 import { useUserContentContext } from './UserContent';
+import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { UserUpdateForm } from './UserUpdateForm';
 
 export const UserContentDetail = () => {
+  const theme = useTheme();
   const { load } = useUserContentContext();
-  const { data, error, isLoading, mutate } = useGetUserDetail(load);
+  const { data } = useGetUserDetail(load);
 
-  if(error) {
-    console.log('error', error)
+  const user = data?.data;
+  if(!user) {
+    return <></>;
   }
 
   return (
-    <div>        
-      xxxx {JSON.stringify(data)}
-    </div>
+    <Stack gap={4} sx={{padding: 2}}>
+      <Box>
+        <Typography variant="caption" color={theme.palette.primary.main}>Name:</Typography>
+        <Typography variant="h6" color={theme.palette.primary.main}>{user.name}</Typography>
+        <Typography variant="caption" color="text.secondary">Email:</Typography>
+        <Typography color="text.secondary">{user.email}</Typography>
+        <Typography variant="caption" color="text.secondary">Phone:</Typography>
+        <Typography color="text.secondary">{user.phoneNumber}</Typography>
+        <Typography variant="caption" color="text.secondary">Address:</Typography>
+        <Typography color="text.secondary">{user.address}</Typography>
+      </Box>
+
+      <UserUpdateForm/>
+    </Stack>
   )
 }

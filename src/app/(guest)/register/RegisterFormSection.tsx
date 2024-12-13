@@ -11,6 +11,7 @@ import { show } from '@/components/Toast';
 export const RegisterFormSection = () => {
   const [
     createUserWithEmailAndPassword,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _user,
     loading,
     error,

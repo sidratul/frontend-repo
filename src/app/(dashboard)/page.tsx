@@ -1,5 +1,5 @@
-import { LogoutButton } from './(dashboard)/LogoutButton';
-import { UserContent } from './(dashboard)/UserContent';
+import { LogoutButton } from './LogoutButton';
+import { UserContent } from './UserContent';
 
 export default function Home() {
   return (

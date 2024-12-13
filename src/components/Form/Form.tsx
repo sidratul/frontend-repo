@@ -4,7 +4,8 @@ import { AnyObject, object } from 'yup';
 import { FormProps } from './form.types';
 import { Button, FormControl, FormHelperText, Stack } from '@mui/material';
 
-export const Form = <T extends Record<string, unknown>>(props: FormProps<T>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const Form = <T extends Record<string, any>>(props: FormProps<T>) => {
   const { onSubmit, data, fields, submitLabel, loading, readOnly} = props;
 
   // TODO: use effect when need dynamic changes
