@@ -22,9 +22,9 @@ export const UserContentDetail = () => {
         <Typography variant="caption" color="text.secondary">Email:</Typography>
         <Typography color="text.secondary">{user.email}</Typography>
         <Typography variant="caption" color="text.secondary">Phone:</Typography>
-        <Typography color="text.secondary">{user.phoneNumber}</Typography>
+        <Typography color="text.secondary">{user.phoneNumber || '-'}</Typography>
         <Typography variant="caption" color="text.secondary">Address:</Typography>
-        <Typography color="text.secondary">{user.address}</Typography>
+        <Typography color="text.secondary">{user.address || '-'}</Typography>
       </Box>
 
       <UserUpdateForm/>

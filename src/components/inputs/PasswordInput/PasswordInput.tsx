@@ -44,7 +44,7 @@ export const PasswordInput = (props: PasswordInputProps & InputProps<string>) =>
           }
         }
       }
-      variant='standard'
+      variant='outlined'
       onChange={(e) => {
         onChange(e.target.value);
       }}

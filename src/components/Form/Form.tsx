@@ -2,7 +2,8 @@ import React from 'react'
 import { useFormik } from 'formik';
 import { AnyObject, object } from 'yup';
 import { FormProps } from './form.types';
-import { Button, FormControl, FormHelperText, Stack } from '@mui/material';
+import { FormControl, FormHelperText, Stack } from '@mui/material';
+import { LoadingButton } from '../LoadingButton';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Form = <T extends Record<string, any>>(props: FormProps<T>) => {
@@ -65,14 +66,12 @@ export const Form = <T extends Record<string, any>>(props: FormProps<T>) => {
         })
       }
       {!readOnly && (
-        <Button
-          onClick={submitForm}
-          variant='contained'
+        <LoadingButton
+          label={submitLabel || 'Submit'}
+          loading={!!loading}
           size='large'
-          disabled={loading}
-        >
-          {submitLabel || 'Submit'}
-        </Button>
+          onClick={submitForm}
+        />
       )}
     </Stack>
   )

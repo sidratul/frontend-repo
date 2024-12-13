@@ -21,7 +21,7 @@ export const TextInput = (props: TextInputProps & InputProps<string>) => {
       onChange={(e) => {
         onChange(e.target.value);
       }}
-      variant='standard'
+      variant='outlined'
     />
   )
 }

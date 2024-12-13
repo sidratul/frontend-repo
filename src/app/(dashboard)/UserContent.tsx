@@ -1,8 +1,9 @@
 'use client'
 import { useGetUserDetail } from '@/api/users/user.api'
-import { Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import React, { createContext, useContext, useState } from 'react'
 import { UserContentDetail } from './UserContentDetail';
+import { LoadingButton } from '@/components/LoadingButton';
 
 interface UserContentContextProps {
   load: boolean;
@@ -30,16 +31,14 @@ export const UserContent = () => {
       }}
     >
       <Stack>
-        <Button onClick={onClick} variant='contained'>Load Data</Button>
+        <LoadingButton
+          loading={isLoading}
+          label='Load Data'
+          onClick={onClick}
+        />
         {
           error && (
             <Typography color='error'>{error.message}</Typography>
-          )
-        }
-
-        {
-          isLoading && (
-            <Typography color='info'>Loading...</Typography>
           )
         }
         <UserContentDetail/>

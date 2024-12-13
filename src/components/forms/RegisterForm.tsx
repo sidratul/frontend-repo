@@ -5,7 +5,7 @@ export const RegisterForm: FC<LoginFormProps> = (props) => {
   return (
     <LoginForm 
       {...props}
-      label='Register'
+      label='Sign Up'
     />
   )
 }

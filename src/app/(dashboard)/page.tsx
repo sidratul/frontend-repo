@@ -1,11 +1,13 @@
-import { LogoutButton } from './LogoutButton';
+import { Metadata } from 'next';
 import { UserContent } from './UserContent';
+
+export const metadata: Metadata = {
+  title: "Profile",
+  description: "profile page",
+};
 
 export default function Home() {
   return (
-    <div>
-      <LogoutButton/>
-      <UserContent/>
-    </div>
+    <UserContent/>
   );
 }

@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { useUserContentContext } from './UserContent';
 import { updateUser, useGetUserDetail } from '@/api/users/user.api';
 import { Typography } from '@mui/material';
+import { show } from '@/components/Toast';
 
 export interface LoginFormProps {
   onSubmit: (data: UserUpdate) => void;
@@ -26,6 +27,7 @@ export const UserUpdateForm = () => {
     try {
       const res = await updateUser(updateData);
       mutate(res, { revalidate: false});
+      show('Profile updated!', 'success');
     } catch(err){
       setError((err as Error).message);
     } finally {

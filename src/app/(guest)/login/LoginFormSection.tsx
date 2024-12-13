@@ -12,6 +12,7 @@ import { login } from '@/app/actions';
 export const LoginFormSection = () => {
   const [
     signInWithEmailAndPassword,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _user,
     loading,
     error,
