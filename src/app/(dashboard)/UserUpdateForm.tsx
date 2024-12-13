@@ -37,7 +37,7 @@ export const UserUpdateForm = () => {
 
   return (
     <>
-    
+      <Typography color='primary' variant='h5'>Update Profile</Typography>
       {error && (
         <Typography color='error'>{error}</Typography>
       )}
@@ -62,6 +62,9 @@ const userFields: FormFieldProps<UserUpdate> = {
     label: 'Email',
     input: TextInput,
     validation: yup.string().required(),
+    props: {
+      readOnly: true,
+    }
   },
   phoneNumber: {
     label: 'Phone',

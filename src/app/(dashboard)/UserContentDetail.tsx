@@ -17,8 +17,8 @@ export const UserContentDetail = () => {
   return (
     <Stack gap={4} sx={{padding: 2}}>
       <Box>
-        <Typography variant="caption" color={theme.palette.primary.main}>Name:</Typography>
-        <Typography variant="h6" color={theme.palette.primary.main}>{user.name}</Typography>
+        <Typography variant="caption" color={theme.palette.secondary.dark}>Name:</Typography>
+        <Typography color={theme.palette.secondary.dark}>{user.name}</Typography>
         <Typography variant="caption" color="text.secondary">Email:</Typography>
         <Typography color="text.secondary">{user.email}</Typography>
         <Typography variant="caption" color="text.secondary">Phone:</Typography>

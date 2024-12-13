@@ -51,7 +51,7 @@ export const Form = <T extends Record<string, any>>(props: FormProps<T>) => {
                 label={field.label}
                 placeholder={field.props?.placeholder}
                 defaultValue={values[key] as T[keyof T]}
-                readOnly={readOnly}
+                readOnly={field.props?.readOnly}
                 onChange={(val: T[keyof T])=>{
                   setFieldValue(key, val);
                 }}
