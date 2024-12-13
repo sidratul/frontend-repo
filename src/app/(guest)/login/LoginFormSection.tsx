@@ -12,7 +12,7 @@ import { login } from '@/app/actions';
 export const LoginFormSection = () => {
   const [
     signInWithEmailAndPassword,
-    user,
+    _user,
     loading,
     error,
   ] = useSignInWithEmailAndPassword(auth);
@@ -28,8 +28,9 @@ export const LoginFormSection = () => {
   const onSubmit = async (data: UserLogin) => {
     const user = await signInWithEmailAndPassword(data.email, data.password);
     const token = await user?.user.getIdToken();
-    
-    login(token!);
+    if (token) {
+      login(token);
+    }
   }
 
   return (

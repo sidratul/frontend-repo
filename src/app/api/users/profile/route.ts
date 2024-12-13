@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -6,10 +7,10 @@ export async function GET(req: NextRequest) {
   const res = await fetch(BE_URL, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
-    },
+      'X-Firebase-AppCheck': token?.value,
+    } as any,
   })
   const data = await res.json();
- 
-  return Response.json({ data })
+  return Response.json({ data }, {status: res.status});
+
 }

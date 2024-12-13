@@ -1,7 +1,11 @@
-import { LogoutButton } from './LogoutButton';
+import { LogoutButton } from './(dashboard)/LogoutButton';
+import { UserContent } from './(dashboard)/UserContent';
 
 export default function Home() {
   return (
-    <LogoutButton/>
+    <div>
+      <LogoutButton/>
+      <UserContent/>
+    </div>
   );
 }
